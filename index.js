@@ -6,7 +6,7 @@ const path = require('path');
 
 // ===== CONFIG =====
 const BOT_TOKEN = '8463225577:AAE5kPGnDT96S6TWqVUCB2EAM4cJXUfI4yY';  // अपना Bot Token डालें
-const ADMIN_IDS = [-1003001708944;             // अपना Admin Chat ID डालें
+const ADMIN_IDS = [-1003001708944];             // अपना Admin Chat ID डालें
 const DEVELOPER = '@yourusername';             // अपना Username डालें
 const PORT = 3000;
 
